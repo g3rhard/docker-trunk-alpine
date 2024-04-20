@@ -29,12 +29,16 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ github.repository }}:$(date +'%Y%m%d')-${{ github.ref_name }}
+          tags: ${{ github.repository }}:${{ steps.date.outputs.date }}-${{ github.ref_name }}
           platforms: linux/amd64,linux/arm64
 
       - name: Send Discord notification
