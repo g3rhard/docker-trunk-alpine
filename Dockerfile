@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1.7
-FROM ubuntu:noble-20240407.1
+FROM ubuntu:noble-20240407.1@sha256:5b582c80ed6832665ffb6181ab4d3e5e70c30c2548fbcea1de8a0a51f161be8d
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -yqq --no-install-recommends \
       curl bash git ca-certificates \
