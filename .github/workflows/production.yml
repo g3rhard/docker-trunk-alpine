@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - "README.md"
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
   pull_request:
     branches: [production]
     paths-ignore:
