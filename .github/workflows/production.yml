@@ -5,9 +5,9 @@ on:
   push:
     branches: [production]
     paths-ignore:
-      - "README.md"
-      - ".trunk"
-  workflow_dispatch:
+      - README.md
+      - .trunk
+  workflow_dispatch: {}
 
 jobs:
   build:
@@ -30,20 +30,20 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
+        run: echo "DATE=$(date +'%Y.%m.%d')" >> "$GITHUB_ENV"
 
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ github.repository }}:${{ steps.date.outputs.date }}-${{ github.ref_name }}
+          tags: ${{ github.repository }}:${{ env.DATE }}-${{ github.ref_name }}
           platforms: linux/amd64,linux/arm64
 
       - name: Send Discord notification
         uses: sarisia/actions-status-discord@v1
         if: always()
         with:
-          title: "${{ github.repository }}: ${{ github.workflow }}"
+          title: "Build image on ${{ github.repository }}: ${{ github.workflow }}"
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
