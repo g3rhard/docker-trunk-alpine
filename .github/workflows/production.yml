@@ -40,6 +40,18 @@ jobs:
           tags: ${{ github.repository }}:${{ env.DATE }}-${{ github.ref_name }}
           platforms: linux/amd64,linux/arm64
 
+      - name: Create Release
+        uses: actions/create-release@v1
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}-${{ env.DATE }}
+          release_name: Release ${{ github.ref_name }}-${{ env.DATE }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+
       - name: Send Discord notification
         uses: sarisia/actions-status-discord@6712a17f7d0531d44cd42ca2a878b0bdfd07b62a # v1
         if: always()
