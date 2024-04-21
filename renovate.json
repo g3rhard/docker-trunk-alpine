@@ -2,13 +2,15 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "configMigration": true,
   "extends": [
+    ":pinDevDependencies",
     "config:recommended",
     "docker:pinDigests",
-    "helpers:pinGitHubActionDigests",
-    ":pinDevDependencies"
+    "helpers:pinGitHubActionDigests"
   ],
   "packageRules": [
     {
+      "automerge": true,
+      "automergeType": "branch",
       "matchPackageNames": [
         "ubuntu"
       ],
@@ -19,8 +21,7 @@
         "minor",
         "patch"
       ],
-      "automerge": true,
-      "automergeType": "branch"
+      "schedule": ["after 9pm on wednesday"]
     }
   ]
 }
