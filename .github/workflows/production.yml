@@ -46,7 +46,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          title: "Release ${{ env.DATE }}-${{ github.ref_name }}"
+          title: "Release ${{ env.DATE }}"
 
       - name: Send Discord notification
         uses: sarisia/actions-status-discord@6712a17f7d0531d44cd42ca2a878b0bdfd07b62a # v1
