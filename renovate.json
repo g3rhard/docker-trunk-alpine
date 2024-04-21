@@ -9,9 +9,16 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["ubuntu"],
-      "matchManagers": ["regex"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "ubuntu"
+      ],
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true,
       "automergeType": "branch"
     }
