@@ -1,5 +1,5 @@
 ---
-name: production
+name: Docker Build/Publish Image
 
 on:
   push:
