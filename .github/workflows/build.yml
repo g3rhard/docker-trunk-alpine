@@ -33,7 +33,7 @@ jobs:
         run: echo "DATE=$(date +'%Y.%m.%d')" >> "$GITHUB_ENV"
 
       - name: Build and push
-        uses: docker/build-push-action@2cdde995de11925a030ce8070c3d77a52ffcf1c0 # v5
+        uses: docker/build-push-action@31159d49c0d4756269a0940a750801a1ea5d7003 # v6
         with:
           context: .
           push: true
