@@ -22,6 +22,10 @@
         "patch"
       ],
       "schedule": ["after 9pm on wednesday"]
+    },
+    {
+      "groupName": "GitHub Actions",
+      "matchManagers": ["github-actions"]
     }
   ]
 }
