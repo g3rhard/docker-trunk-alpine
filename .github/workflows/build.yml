@@ -41,7 +41,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
 
       - name: Create a Release
-        uses: elgohr/Github-Release-Action@edea2b66b44cdd48a00eb134b39959db2703b1cd # 20240405193535
+        uses: elgohr/Github-Release-Action@3af318c9bb451e43ab8cea7fa17a5598abe94ed2 # 20240816194204
         if: success()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
